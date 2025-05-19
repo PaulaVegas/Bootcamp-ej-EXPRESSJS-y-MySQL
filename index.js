@@ -208,6 +208,14 @@ app.get("/products/name/:name", (req, res) => {
 
 // EJERCICIO 5
 // Eliminar un producto
+app.delete("/products/id/:id", (req, res) => {
+  const { id } = req.params;
+  const sql = `DELETE FROM products WHERE id = ?`;
+  db.query(sql, [id], (err, result) => {
+    if (err) throw err;
+    res.send("Product deleted...");
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
