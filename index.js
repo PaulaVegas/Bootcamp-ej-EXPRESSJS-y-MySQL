@@ -98,8 +98,35 @@ app.post("/addCategory", (req, res) => {
 });
 
 // EJERCICIO 3
-// Crea un endpoint para actualizar un producto.
-// Crea un endpoint para actualizar una categoría.
+// Actualizar un producto.
+app.put("/products/id/:id", (req, res) => {
+  const { name, price } = req.body;
+  const { id } = req.params;
+
+  const sql = `UPDATE products SET name = ?, price = ? WHERE id = ?`;
+  const values = [name, price, id];
+
+  db.query(sql, values, (err, result) => {
+    if (err) throw err;
+    res.send("Product updated...");
+  });
+});
+
+// Actualizar una categoría.
+app.put("/category/id/:id", (req, res) => {
+  const { name, type } = req.body;
+  const { id } = req.params;
+
+  const sql = `UPDATE categories SET name = ?, type = ? WHERE id = ?`;
+  const values = [name, type, id];
+
+  db.query(sql, values, (err, result) => {
+    if (err) throw err;
+    res.send("Category updated...");
+  });
+});
+
+// EJERCICIO 4
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
