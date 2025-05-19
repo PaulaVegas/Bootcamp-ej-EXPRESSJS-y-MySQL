@@ -62,7 +62,7 @@ Crea las siguientes tablas usando Express y MySQL como hemos visto en clase:
 - Crea un archivo categories.js dentro de una carpeta routes que contenga todas las rutas de categories
 - Crea un CategoryController.js que contenga todas las acciones de los categories
 
-##2.1. Extra
+## 2.1. Extra
 
 ### Ejercicio 1
 
