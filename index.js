@@ -67,8 +67,39 @@ app.get("/createProductCategories", (req, res) => {
 });
 
 //EJERCICIO 2
-// Crea un endpoint para añadir un producto nuevo y añade 2 productos nuevos desde postman
-// Crea un endpoint para crear una categoría y añade 2 categorías nuevas desde postman
+// Añadir producto nuevo
+app.post("/addProduct", (req, res) => {
+  const product = {
+    name: req.body.name,
+    price: req.body.price,
+  };
+  const sql = "INSERT INTO products SET ?";
+
+  db.query(sql, product, (err, result) => {
+    if (err) throw err;
+    console.log(result);
+    res.send("Product added...");
+  });
+});
+
+// Añadir categoría nueva
+app.post("/addCategory", (req, res) => {
+  const category = {
+    name: req.body.name,
+    type: req.body.type,
+  };
+  const sql = "INSERT INTO categories SET ?";
+
+  db.query(sql, category, (err, result) => {
+    if (err) throw err;
+    console.log(result);
+    res.send("Category added...");
+  });
+});
+
+// EJERCICIO 3
+// Crea un endpoint para actualizar un producto.
+// Crea un endpoint para actualizar una categoría.
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
