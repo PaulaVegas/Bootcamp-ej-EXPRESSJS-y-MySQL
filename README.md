@@ -38,7 +38,7 @@ Crea las siguientes tablas usando Express y MySQL como hemos visto en clase:
 - Crea un endpoint donde puedas seleccionar una categoría por id
 - Crea un endpoint donde puedas buscar un producto por su nombre
 
-### Ejercicio 4
+### Ejercicio 5
 
 - Crea un endpoint donde puedas eliminar un producto por su id
 

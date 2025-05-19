@@ -57,8 +57,8 @@ app.get("/createProductCategories", (req, res) => {
         product_id INT,
         category_id INT,
         PRIMARY KEY (product_id, category_id),
-        FOREIGN KEY (product_id) REFERENCES Products(id),
-        FOREIGN KEY (category_id) REFERENCES Categories(id)
+        FOREIGN KEY (product_id) REFERENCES products(id),
+        FOREIGN KEY (category_id) REFERENCES categories(id)
     )`;
   db.query(sql, (err, result) => {
     if (err) throw err;
@@ -97,6 +97,16 @@ app.post("/addCategory", (req, res) => {
   });
 });
 
+// Asociar un producto con una categoría
+app.post("/addProductToCategory", (req, res) => {
+  const { product_id, category_id } = req.body;
+  const sql = `INSERT INTO productCategories (product_id, category_id) VALUES (?, ?)`;
+  db.query(sql, [product_id, category_id], (err, result) => {
+    if (err) throw err;
+    res.send("Producto asociado a categoría.");
+  });
+});
+
 // EJERCICIO 3
 // Actualizar un producto.
 app.put("/products/id/:id", (req, res) => {
@@ -127,6 +137,77 @@ app.put("/category/id/:id", (req, res) => {
 });
 
 // EJERCICIO 4
+// Mostrar todos los productos
+app.get("/showProducts", (req, res) => {
+  const sql = "SELECT * FROM products";
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+// Mostrar todas las categorías
+app.get("/showCategories", (req, res) => {
+  const sql = "SELECT * FROM categories";
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+// Mostrar todos los productos con sus categorías
+app.get("/showProductsWithCategories", (req, res) => {
+  const sql = `SELECT p.id, p.name AS product_name, c.name AS category_name
+               FROM products p
+               JOIN productCategories pc ON p.id = pc.product_id
+               JOIN categories c ON pc.category_id = c.id`;
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+// Seleccionar un producto por id
+app.get("/products/id/:id", (req, res) => {
+  const { id } = req.params;
+  const sql = `SELECT * FROM products WHERE id = ?`;
+  db.query(sql, [id], (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+// Mostrar de forma descendente los productos.
+app.get("/products/desc", (req, res) => {
+  const sql = `SELECT * FROM products ORDER BY id DESC`;
+  db.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+// Seleccionar una categoría por id
+app.get("/category/id/:id", (req, res) => {
+  const { id } = req.params;
+  const sql = `SELECT * FROM categories WHERE id = ?`;
+  db.query(sql, [id], (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+// Buscar un producto por su nombre
+app.get("/products/name/:name", (req, res) => {
+  const { name } = req.params;
+  const sql = `SELECT * FROM products WHERE name LIKE ?`;
+  db.query(sql, [`%${name}%`], (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+// EJERCICIO 5
+// Eliminar un producto
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
