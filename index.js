@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 const db = require("./config/database.js");
-const mysql = require("mysql2");
 
 app.use(express.json());
 
