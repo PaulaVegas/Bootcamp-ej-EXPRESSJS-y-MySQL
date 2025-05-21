@@ -14,21 +14,6 @@ const CategoryController = {
 		});
 	},
 
-	//Tabla intermedia createProductCategories
-	createTableProductCategories(req, res) {
-		const sql = `CREATE TABLE productCategories (
-        product_id INT,
-        category_id INT,
-        PRIMARY KEY (product_id, category_id),
-        FOREIGN KEY (product_id) REFERENCES products(id),
-        FOREIGN KEY (category_id) REFERENCES categories(id)
-    )`;
-		db.query(sql, (err, result) => {
-			if (err) throw err;
-			res.send("productCategories table created...");
-		});
-	},
-
 	// Añadir categoría nueva
 	addCategory(req, res) {
 		const category = {

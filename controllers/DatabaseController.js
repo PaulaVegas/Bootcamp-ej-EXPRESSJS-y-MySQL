@@ -2,7 +2,7 @@ const db = require("../config/database");
 
 const DatabaseController = {
 	//Crear base de datos
-	createDatabase: (req, res) => {
+	create: (req, res) => {
 		const sql = "CREATE DATABASE ejercicioExpressMySQL";
 		db.query(sql, (err, result) => {
 			if (err) throw err;
