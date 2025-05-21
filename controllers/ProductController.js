@@ -11,7 +11,7 @@ const ProductController = {
 		db.query(sql, (err, result) => {
 			if (err) throw err;
 			console.log(result);
-			res.send("Users table created...");
+			res.send("Product table created...");
 		});
 	},
 
@@ -41,7 +41,7 @@ const ProductController = {
 	},
 
 	// Actualizar un producto.
-	updateProduct(req, res) {
+	update(req, res) {
 		const { name, price } = req.body;
 		const { id } = req.params;
 

@@ -1,19 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const ProductsController = require("../controllers/ProductsController");
+const ProductController = require("../controllers/ProductController");
 
-router.get("/createTableProducts", ProductsController.createTable);
-router.post("/createProduct", ProductsController.addProduct);
-router.post("/addCategory", ProductsController.addProductToCategory);
-router.put("/product/:id", ProductsController.update);
-router.get("/products", ProductsController.getAll);
-router.get("/products/id/:id", ProductsController.getById);
+router.get("/createTableProducts", ProductController.createTable);
+router.post("/createProduct", ProductController.addProduct);
+router.post("/addCategory", ProductController.addProductToCategory);
+router.put("/product/:id", ProductController.update);
+router.get("/products", ProductController.getAll);
+router.get("/products/id/:id", ProductController.getById);
 router.get(
 	"/productsWithCategory/",
-	ProductsController.getProductsWithCategories
+	ProductController.getProductsWithCategories
 );
-router.get("/products/desc", ProductsController.getDesc);
-router.get("/products/name/:name", ProductsController.getByName);
-router.delete("/deleteProduct/:id", ProductsController.delete);
+router.get("/products/desc", ProductController.getDesc);
+router.get("/products/name/:name", ProductController.getByName);
+router.delete("/deleteProduct/:id", ProductController.delete);
 
 module.exports = router;

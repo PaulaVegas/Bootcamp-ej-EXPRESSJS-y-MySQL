@@ -2,14 +2,14 @@ const express = require("express");
 const router = express.Router();
 const CategoryController = require("../controllers/CategoryController");
 
-router.get("/createTableCategories", CategoriesController.createTable);
+router.get("/createTableCategories", CategoryController.createTable);
 router.get(
 	"/createTableProductCategories",
-	CategoriesController.createTableProductCategories
+	CategoryController.createTableProductCategories
 );
-router.post("/createCategory", CategoriesController.addCategory);
-router.put("/category/:id", CategoriesController.update);
-router.get("/categories", CategoriesController.getAll);
-router.get("/categories/id/:id", CategoriesController.getById);
+router.post("/createCategory", CategoryController.addCategory);
+router.put("/category/:id", CategoryController.update);
+router.get("/categories", CategoryController.getAll);
+router.get("/categories/id/:id", CategoryController.getById);
 
 module.exports = router;
