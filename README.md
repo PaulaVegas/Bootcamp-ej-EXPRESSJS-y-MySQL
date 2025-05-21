@@ -6,17 +6,49 @@
 - Manejar NPM
 - Aprender a utilizar MySql con Express
 
-## 1.1.Endpoints
+## 🔧 Paquetes necesarios para el proyecto
+
+- Nodemon
+- Express
+- Mysql2
+
+## Para iniciar el proyecto
+
+Clonar el proyecto
+
+```bash
+git clone https://github.com/PaulaVegas/Bootcamp-ej-EXPRESSJS-y-MySQL
+```
+
+Instalar paquetes necesarios
+
+```bash
+npm install -D nodemon
+```
+
+```bash
+npm install mysql2
+```
+
+Empezar el servidor
+
+```bash
+npm run dev
+```
+
+## Screenshots
+
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+## Desarrollado por
+
+- [@PaulaVegas](https://www.github.com/PaulaVegas)
+
+## Endpoints
 
 ### Ejercicio 1
 
 #### Crea endpoint de base de datos
-
-Crea las siguientes tablas usando Express y MySQL como hemos visto en clase:
-
-- Tabla Products
-- Tabla Categories
-  \*Recuerda que en el caso de una relación muchos a muchos necesitarás una tabla intermedia.
 
 ### Ejercicio 2
 
