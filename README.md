@@ -6,13 +6,7 @@
 - Manejar NPM
 - Aprender a utilizar MySql con Express
 
-## 🔧 Paquetes necesarios para el proyecto
-
-- Nodemon
-- Express
-- Mysql2
-
-## Para iniciar el proyecto
+## 🔧 Para iniciar el proyecto
 
 Clonar el proyecto
 
