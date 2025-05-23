@@ -8,18 +8,21 @@ app.use("/database", require("./routes/database.js"));
 app.use("/products", require("./routes/products.js"));
 app.use("/categories", require("./routes/categories.js"));
 app.use("/productCategories", require("./routes/productsCategories.js"));
+app.use("/users", require("./routes/users.js"));
+app.use("/orders", require("./routes/orders.js"));
+app.use("/usersOrders", require("./routes/usersOrders.js"));
 
 app.get("/testdb", (req, res) => {
-	const db = require("./config/database");
-	db.query("SELECT 1 + 1 AS solution", (err, results) => {
-		if (err) {
-			console.error(err);
-			return res.status(500).send("DB error");
-		}
-		res.send(`DB connected, result: ${results[0].solution}`);
-	});
+  const db = require("./config/database");
+  db.query("SELECT 1 + 1 AS solution", (err, results) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send("DB error");
+    }
+    res.send(`DB connected, result: ${results[0].solution}`);
+  });
 });
 
 app.listen(PORT, () => {
-	console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
